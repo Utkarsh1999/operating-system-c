@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<sys/stat.h>
+#include<sys/shm.h>
+#include<fcntl.h>
+#include<sys/mman.h>
+
+#define SIZE 1024
+
+int main()
+{
+	const char *name="firstSHM";	
+	
+	int shm_fd = shm_open(name,O_CREAT|O_RDWR,0666);
+	
+	ftruncate(shm_fd,SIZE);
+
+	void *shm_ptr = mmap(0,SIZE,PROT_WRITE,MAP_SHARED,shm_fd,0);
+
+	sprintf((char*)shm_ptr,"SHM WORKS USING MEMORY MAPPING\n");
+
+	return 0;
+}
