@@ -7,7 +7,7 @@
 int main()
 {
 	
-	char *str="Mayank Dua";
+	char *str="Utkarsh singh";
 
 	int shm_id=shmget(IPC_PRIVATE,SIZE,S_IRUSR|S_IWUSR);	// CREATE A SHM
 
